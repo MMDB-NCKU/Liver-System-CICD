@@ -8,7 +8,7 @@ steps:
   pull: never
   commands:
     - cd /drone/src
-    - wget https://github.com/MMDB-NCKU/Liver-System-CICD/releases/download/Models/model.pth
+    - wget https://github.com/MMDB-NCKU/Liver-System-CICD/releases/download/Model/model.pth
     - ls -al
 - name: Model Testing
   image: liver_yolo_cicd:liver_yolo_cicd
