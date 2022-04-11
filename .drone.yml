@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: liver_system1
+name: liver_system
 
 steps:
 - name: Model Downloading
