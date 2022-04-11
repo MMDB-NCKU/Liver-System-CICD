@@ -1,0 +1,28 @@
+---
+kind: pipeline
+name: testing
+
+steps:
+- name: Model Downloading
+  image: liver_yolo_cicd:liver_yolo_cicd
+  pull: never
+  commands:
+    - cd /drone/src
+    - wget https://github.com/MMDB-NCKU/Liver-System-CICD/releases/download/Models/model.pth
+    - ls -al
+- name: Model Testing
+  image: liver_yolo_cicd:liver_yolo_cicd
+  shm_size: 16384000000
+  pull: never
+  commands:
+    - cd /CICD
+    - ls -al
+    - echo Liver_disease> classes.names
+    - /opt/conda/bin/python3 PyTorch-YOLOv3_5channel_hospital/pytorchyolo/detect.py -i /CICD/CI_Testing_Data/CI_Testing_Data_img.txt -l /CICD/CI_Testing_Data/CI_Testing_Data_liver.txt -t /CICD/CI_Testing_Data/CI_Testing_Data_thr.txt -o /CICD/CI_Testing_Data/CI_Testing_Data_detect_result/ -w /drone/src/model.pth -m PyTorch-YOLOv3_5channel_hospital/yolov3-custom.cfg -c /CICD/classes.names --n_cpu 1
+- name: Model Updating
+  image: liver_yolo_cicd:liver_yolo_cicd
+  pull: never
+  commands:
+    - cd /drone/src
+    - ls -al
+    - sshpass -p 23456 scp -P 25322 model.pth mmdb@140.116.86.241:/home/mmdb/cicd/
