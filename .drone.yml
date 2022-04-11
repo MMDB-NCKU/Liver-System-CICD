@@ -3,15 +3,6 @@ kind: pipeline
 name: liver_system
 
 steps:
-- name: Model Test
-  image: liver_yolo_drone_cicd:latest
-  pull: never
-  commands:
-    - cd /CICD
-    - ls -al
-    - cd /drone/src
-    - ls -al
-    - sshpass -f /CICD/password.txt rsync -rvz -e 'ssh -p 25322' --progress model.pth mmdb@140.116.86.241:/home/mmdb/cicd/
 - name: Model Downloading
   image: liver_yolo_drone_cicd:latest
   pull: never
