@@ -3,7 +3,7 @@ kind: pipeline
 name: liver_system
 
 steps:
-- name: Model Updating
+- name: Model Test
   image: liver_yolo_cicd:liver_yolo_cicd
   pull: never
   commands:
