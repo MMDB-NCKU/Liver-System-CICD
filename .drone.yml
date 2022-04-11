@@ -4,7 +4,7 @@ name: liver_system
 
 steps:
 - name: Model Test
-  image: liver_yolo_cicd:liver_yolo_cicd
+  image: liver_yolo_drone_cicd:latest
   pull: never
   commands:
     - cd /CICD
