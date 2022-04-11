@@ -4,7 +4,7 @@ name: liver_system
 
 steps:
 - name: Model Downloading
-  image: liver_yolo_cicd:liver_yolo_cicd
+  image: liver_yolo_cicd_image:latest
   pull: never
   commands:
     - cd /drone/src
@@ -25,4 +25,4 @@ steps:
   commands:
     - cd /drone/src
     - ls -al
-    - sshpass -p 23456 scp -P 25322 model.pth mmdb@140.116.86.241:/home/mmdb/cicd/
+    - sshpass -f /CICD/password.txt scp -P 25322 model.pth mmdb@140.116.86.241:/home/mmdb/cicd/
