@@ -25,4 +25,4 @@ steps:
   commands:
     - cd /drone/src
     - ls -al
-    - sshpass -f /CICD/password.txt rsync -rvz -e 'ssh -p 25322' --progress model.pth mmdb@140.116.86.241:/home/mmdb/cicd/
+    - sshpass -f /CICD/password.txt rsync -rvz -e 'ssh -p 25322' --progress model.pth mmdb@140.116.86.241:/home/mmdb/Liver_System/Deep_Models/PyTorch-YOLOv3_5channel_hospital/cicd_model
